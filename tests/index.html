@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>QUnit Example</title>
+    <link rel="stylesheet" href="../css/qunit-1.19.0.css">
+</head>
+
+<body>
+    <div id="qunit"></div>
+    <!--qunit-fixtureに定義したタグは、テスト実行都度クリアされる。
+      ただしブラウザ上表示されないため、人間が目視できない。-->
+    <!--div id='qunit-fixture'-->
+
+    <!--custom-fixtureはqunit-fixtureと同目的だが、人間が目視できるよう、
+      qunitではなくテスト中で独自にsetup/teardownを行うようにした。
+      また、HTMLの断片を別ファイルに定義し、ajaxで取得しcustom-fixtureの内容をテストごとに置き換え可能とした。
+      （FireFoxではセキュリティエラーとなるため、jscoverなどの併用が必要。）
+      -->
+    <div id='custom-fixture'>
+    </div>
+    <div id='log-message'>
+        <p>ログメッセージ出力エリア</p>
+        <ol id='log-message-ol'>
+        </ol>
+    </div>
+    <script src="../js/lib/qunit-1.19.0.js"></script>
+    <script src="../js/lib/underscore.js"></script>
+    <script src="../js/lib/jquery-1.11.3.js"></script>
+    <script src="../js/lib/backbone.js"></script>
+    <script src="../js/lib/backbone-validation-amd.js"></script>
+    <script src="../js/lib/backbone-validation.js"></script>
+    <script src="../js/lib/testutils.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>
