@@ -2,6 +2,7 @@
 module("backbone.basic", {
     // 2 セットアップ
     beforeEach: function () {
+        'use strict';
         // Loggerのwrite処理を起きかえ
         testutils.logger.write = function (message) {
             $('#log-message-ol').append('<li>' + message + '</li>');
@@ -11,6 +12,7 @@ module("backbone.basic", {
 
     },
     afterEach: function () {
+        'use strict';
         // #custom-fixtureのリストア処理
         testutils.htmlfixture.teardownFixture();
 
@@ -81,7 +83,7 @@ test("モデルのテスト", function () {
     ok(!modelInstance.has('deletedProp')); //false
 
     //コンストラクタ呼び出し時、プロパティを指定する場合。
-    var modelInstance = new MyModel({
+    modelInstance = new MyModel({
         name: 'aaa',
         value: 'bbb'
     });
