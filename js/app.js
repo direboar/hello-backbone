@@ -345,87 +345,60 @@ test("モデルのメソッド（underscore.jsのメソッド）を使用する�
     ok(!(picked instanceof Backbone.Model));
 });
 
-
-test("モデルのRest", function () {
-    //CORSを行うため。これがないと、HTML取得元サーバー以外の通信はエラーとなる。
-    jQuery.support.cors = true;
-
-    var MyModel = Backbone.Model.extend({
-        //  urlRoot: "http://www.yahoo.co.jp/" 　…これにしておくと、urlRoot/idに対してリクエストを投げる。
-        url: function () {
-            return "http://weather.livedoor.com/forecast/webservice/json/v1?city=" + this.get('id')
-        }
-    });
-
-    var myModel = new MyModel({
-        id: 400040
-    });
-
-    stop();
-    myModel.fetch().success(function () {
-        ok(true, JSON.stringify(myModel)); //json文字列にして表示しないとわからん・・
-        start();
-    });
-
-    //もし非同期にしない場合は、fetchの引数にjqueryのoptionを指定すれば良さそう。
-    myModel.fetch({
-        async: false
-    }).success(function () {
-        ok(true, JSON.stringify(myModel)); //json文字列にして表示しないとわからん・・
-    });
-
-    //parseを使うと、戻り値のJSONオブジェクトを解析し、その結果をモデルのアトリビュートとして使用できる。
-    var ParseModel = Backbone.Model.extend({
-        url: function () {
-            return "http://weather.livedoor.com/forecast/webservice/json/v1?city=" + this.get('id')
-        },
-        parse: function (response) {
-            //予想だけを返却する。
-            return response.forecasts;
-        }
-    });
-
-    var parseModel = new ParseModel({
-        id: '400040'
-    });
-
-    parseModel.fetch({
-        async: false
-    }).error(function (a, b, c) {
-        //指定できるハンドラはjQueryのハンドラと同じっぽい。
-        alert(b);
-        alert(c);
-    });
-
-    ok(true, JSON.stringify(parseModel));
-});
-
-test("モデルのRestその２：mockjax", function () {
-    //CORSを行うため。これがないと、HTML取得元サーバー以外の通信はエラーとなる。
-    jQuery.support.cors = true;
-
-    var MyModel = Backbone.Model.extend({
-        urlRoot: '/myModel'
-    });
-
-    var myModel = new MyModel({
-        id: 1
-    });
-
-    $.mockjax({
-        url: '/myModel/1',
-        responseText: {
-            name: "Name",
-            value: "Value"
-        }
-    });
-
-    stop();
-    myModel.fetch().success(function () {
-        start();
-        ok(true, JSON.stringify(myModel));
-    });
-});
+//
+//test("モデルのRest", function () {
+//    //CORSを行うため。これがないと、HTML取得元サーバー以外の通信はエラーとなる。
+//    jQuery.support.cors = true;
+//
+//    var MyModel = Backbone.Model.extend({
+//        //  urlRoot: "http://www.yahoo.co.jp/" 　…これにしておくと、urlRoot/idに対してリクエストを投げる。
+//        url: function () {
+//            return "http://weather.livedoor.com/forecast/webservice/json/v1?city=" + this.get('id')
+//        }
+//    });
+//
+//    var myModel = new MyModel({
+//        id: 400040
+//    });
+//
+//    stop();
+//    myModel.fetch().success(function () {
+//        ok(true, JSON.stringify(myModel)); //json文字列にして表示しないとわからん・・
+//        start();
+//    });
+//
+//    //もし非同期にしない場合は、fetchの引数にjqueryのoptionを指定すれば良さそう。
+//    myModel.fetch({
+//        async: false
+//    }).success(function () {
+//        ok(true, JSON.stringify(myModel)); //json文字列にして表示しないとわからん・・
+//    });
+//
+//    //parseを使うと、戻り値のJSONオブジェクトを解析し、その結果をモデルのアトリビュートとして使用できる。
+//    var ParseModel = Backbone.Model.extend({
+//        url: function () {
+//            return "http://weather.livedoor.com/forecast/webservice/json/v1?city=" + this.get('id')
+//        },
+//        parse: function (response) {
+//            //予想だけを返却する。
+//            return response.forecasts;
+//        }
+//    });
+//
+//    var parseModel = new ParseModel({
+//        id: '400040'
+//    });
+//
+//    parseModel.fetch({
+//        async: false
+//    }).error(function (a, b, c) {
+//        //指定できるハンドラはjQueryのハンドラと同じっぽい。
+//        alert(b);
+//        alert(c);
+//    });
+//
+//    ok(true, JSON.stringify(parseModel));
+//});
 
 test("Viewのテスト", function () {
     //view
