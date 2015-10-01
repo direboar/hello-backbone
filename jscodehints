@@ -1,0 +1,3 @@
+{
+"excluded-files" : ["*.png", "*.jpg", "*.jpeg", "*.gif", ".svg", ".ttf", ".woff"]
+}

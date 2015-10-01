@@ -42,7 +42,7 @@ test("モデルのテスト", function () {
                 return "hello";
             },
             sayHello: function () {
-                //thisは自信をちゃんとさす模様。
+                //thisはエンティティ自身をちゃんと指す模様。
                 //属性の取得/更新は、自インスタンス内であってもget/setを使用する必要がある。
                 return this.hello() + ",My Name Is " + this.get("name");
             },
@@ -92,7 +92,8 @@ test("モデルのテスト", function () {
 
     ////プロパティを連想配列として取得
     var attributes = modelInstance.attributes;
-    equal(undefined, attributes.length, 2); //レングスは取れない・・・
+    //    equal(undefined, attributes.length, 2); //レングスは取れない・・・
+    equal(_.size(attributes), 2); //レングスは取れない・・・
     equal(attributes.name, 'aaa');
     equal(attributes.value, 'bbb');
 
