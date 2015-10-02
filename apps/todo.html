@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>todo app.</title>
+    <script src="../js/lib/underscore.js"></script>
+    <script src="../js/lib/jquery-1.11.3.js"></script>
+    <script src="../js/lib/backbone.js"></script>
+    <script src="../js/lib/backbone-validation-amd.js"></script>
+    <script src="../js/lib/backbone-validation.js"></script>
+    <script src="../js/lib/jsrender.js"></script>
+    <script src="../js/todo.js"></script>
+</head>
+
+<body>
+    <div id="input">
+        <form id="todo-form">
+            <input type="text" id="todo-text"></input>
+            <button id="addTaskButton">タスクを追加</button>
+        </form>
+    </div>
+    <div id="todo">
+        <table id="todo-table" />
+    </div>
+</body>
+
+<script id="item-template" type="text/x-jsrender">
+    <tr>
+        <td>{{>task}}</td>
+        <td>
+            <input type="checkbox" />
+        </td>
+        <td>
+            <button class="delete">delete task</button>
+        </td>
+    </tr>
+</script>
+
+</html>
