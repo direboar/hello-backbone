@@ -18,8 +18,7 @@
       また、HTMLの断片を別ファイルに定義し、ajaxで取得しcustom-fixtureの内容をテストごとに置き換え可能とした。
       （FireFoxではセキュリティエラーとなるため、jscoverなどの併用が必要。）
       -->
-    <div id='custom-fixture'>
-    </div>
+    <div id='custom-fixture'>CONTENT</div>
     <div id='log-message'>
         <p>ログメッセージ出力エリア</p>
         <ol id='log-message-ol'>
@@ -31,10 +30,21 @@
     <script src="../js/lib/backbone.js"></script>
     <script src="../js/lib/backbone-validation-amd.js"></script>
     <script src="../js/lib/backbone-validation.js"></script>
+    <script src="../js/lib/jsrender.js"></script>
     <script src="../js/lib/testutils.js"></script>
     <script src="../js/lib/jquery.mockjax.js"></script>
     <script src="../js/app.js"></script>
-    <script src="../js/app-2.js"></script> <!--todo modify file name.-->
+    <script src="../js/app-2.js"></script>
+    <script src="../js/view.js"></script>
 </body>
+
+<script id="hoge-template" type="text/x-jsrender">
+    <div>
+        <ul>
+            <li>{{>title}}</li>
+            <li>{{>message}}</li>
+        </ul>
+    </div>
+</script>
 
 </html>

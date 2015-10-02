@@ -1,5 +1,5 @@
 // 1 テストのグルーピング
-module("backbone.basic", {
+module("backbone.app", {
     // 2 セットアップ
     beforeEach: function () {
         'use strict';
@@ -346,16 +346,18 @@ test("モデルのメソッド（underscore.jsのメソッド）を使用する�
     ok(!(picked instanceof Backbone.Model));
 });
 
-test("モデルのisNew",function(){
-     //isNewはモデルが永続化されているかどうかの判定。
-     //backboneとしては、idプロパティの有無で判断。
-     //サーバー側でIDを振るイメージの設計になっていると思う。
-     
+test("モデルのisNew", function () {
+    //isNewはモデルが永続化されているかどうかの判定。
+    //backboneとしては、idプロパティの有無で判断。
+    //サーバー側でIDを振るイメージの設計になっていると思う。
+
     var MyModel = Backbone.Model.extend({});
-    var myModel = new MyModel({id : 1})
-    equal(false,myModel.isNew());
+    var myModel = new MyModel({
+        id: 1
+    })
+    equal(false, myModel.isNew());
     myModel = new MyModel();
-    equal(true,myModel.isNew());
+    equal(true, myModel.isNew());
 
 });
 
