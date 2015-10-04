@@ -1,5 +1,5 @@
 // 1 テストのグルーピング
-module("backbone.view", {
+module("backbone.view-test", {
     // 2 セットアップ
     beforeEach: function () {
         'use strict';
@@ -20,6 +20,24 @@ module("backbone.view", {
         $.mockjax.clear();
     }
 });
+
+test("Viewのテスト", function () {
+    //view
+    var MyView = Backbone.View.extend({
+        render: function () {
+            this.$el.text('hello');
+            return this;
+        }
+    });
+
+    //viewを呼び出し、HTMLにrenderの結果を表示する。
+    var viewInstance = new MyView();
+    $('#custom-fixture').append(viewInstance.render().el);
+
+    equal($('#custom-fixture').text(), 'hello');
+
+});
+
 
 test("Viewのテスト", function () {
     //既にDOM上に存在するElementを書き換える場合。

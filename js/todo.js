@@ -1,4 +1,5 @@
-$(function () {
+$(document).ready(function () {
+    //$(function () {
     'use strict';
 
     //TODOタスクのエンティティ。
